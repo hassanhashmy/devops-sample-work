@@ -43,56 +43,102 @@ aws configure
 Enter this region: eu-west-2
 
 - Install NVM
-```wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash```
+```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+```
 If not worked then use
-```curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash```
-```nvm --version```
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
+```
+```
+nvm --version
+```
 
 - Install NPM
-```curl http://npmjs.org/install.sh | sh```
-```npm```
+```
+curl http://npmjs.org/install.sh | sh
+```
+```
+npm
+```
 
 - install git
-```yum install git```
+```
+yum install git
+```
 
 - Install Node
-```nvm install node -g```
+```
+nvm install node -g
+```
 or try
-```nvm install node```
-```node ```
+```
+nvm install node
+```
+```
+node
+```
 
 - Install Serverless Framework
-```npm install  serverless```
-```npx serverless  install -u https://github.com/hassanhashmy/http_api.git```
+```
+npm install  serverless
+```
+```
+npx serverless  install -u https://github.com/hassanhashmy/http_api.git
+```
 
 - Run Python Script to See output (not compulsory)
-```chmod +x python.py```
-```python python.py```
+```
+chmod +x python.py
+```
+```
+python python.py
+```
 
 - Deploy Part 1 Solution
-```cd http_api```
-```npx serverless deploy```
+```
+cd http_api
+```
+```
+npx serverless deploy
+```
 
 - Test Your Deployment
 At the end of successful deployment you will see information like this
 
-```curl Your_Link```    # For example ```curl https://XXXXXXXXXXX.execute-api.eu-west-2.amazonaws.com/dev/```
+```
+curl Your_Link # For example ```curl https://XXXXXXXXXXX.execute-api.eu-west-2.amazonaws.com/dev/```
+```    
 - Delete or Remove the Solution
-```npx serverless remove```
+```
+npx serverless remove
+```
 
 
 ### Contribution Instructions
 The initial version of serverless framework is [here](https://github.com/serverless/examples/tree/master/aws-python-simple-http-endpoint)
 
 - Install pip
-```curl -O https://bootstrap.pypa.io/get-pip.py```
-```python3 get-pip.py --user```
-```echo 'export PATH=~/.local/bin:$PATH' >> /root/.bash_profile```
-```source /root/.bash_profile```
+```
+curl -O https://bootstrap.pypa.io/get-pip.py
+```
+```
+python3 get-pip.py --user
+```
+```
+echo 'export PATH=~/.local/bin:$PATH' >> /root/.bash_profile
+```
+```
+source /root/.bash_profile
+```
 
 - Install python libraries
-```cd http_api```
-```pip install --target python requests```
+```
+cd http_api
+```
+```
+pip install --target python requests
+```
 
 ### Resources
 
