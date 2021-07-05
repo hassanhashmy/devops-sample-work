@@ -1,0 +1,21 @@
+service: http-api
+
+frameworkVersion: "2.50.0"
+
+provider:
+  name: aws
+  region: eu-west-2
+  stackName: http-api
+  apiName: http_api 
+  runtime: python3.8 # or python3.7, supported as of November 2018
+  stage: dev
+
+functions:
+  http_api:
+    handler: handler.endpoint
+    name: http_api
+    events:
+      - http:
+          path: /
+          method: get
+          integration: lambda
