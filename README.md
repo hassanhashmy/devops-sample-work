@@ -74,7 +74,7 @@ or try
 - Test Your Deployment
 At the end of successful deployment you will see information like this
 
-```curl Your_Link```    # For example curl https://XXXXXXXXXXX.execute-api.eu-west-2.amazonaws.com/dev/
+```curl Your_Link```    # For example ```curl https://XXXXXXXXXXX.execute-api.eu-west-2.amazonaws.com/dev/```
 - Delete or Remove the Solution
 ```npx serverless remove```
 
