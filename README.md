@@ -87,20 +87,19 @@ npm install  serverless
 npx serverless  install -u https://github.com/hassanhashmy/http_api.git
 ```
 
-- Run Python Script to See output (not compulsory)
-```
-chmod +x python.py
-```
-```
-python python.py
-```
-
 - Deploy Part 1 Solution
 ```
 cd http_api
 ```
 ```
 npx serverless deploy
+```
+- Run Python Script to See output (not compulsory)
+```
+chmod +x python.py
+```
+```
+python python.py
 ```
 
 - Test Your Deployment
