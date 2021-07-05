@@ -37,7 +37,9 @@ This project contains the aws resource definition for:
 - Have ```python``` installed
 
 - Configure AWS CLI
-```aws configure```
+```
+aws configure
+```
 Enter this region: eu-west-2
 
 - Install NVM
