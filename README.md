@@ -1,6 +1,6 @@
 # http_api
 This is sample rest http api serverless framework deployment with aws lambda python3.8 and api gateway without proxy integration. This solution ingest Data from an api using Lambda with python 3.8 runtime, parse that data and return the response to AWS Api Gateway with REST HTTP. This solution selects default aws region eu-west-2
-<img src="./simplehttp_apiT.png">
+
 
 ## Problem Statement
 This problem does have 2 parts. First one is to write python script and parse the data as per requirement and serve it as http api. In this solution we are only completing Part 1.
@@ -9,6 +9,7 @@ This problem does have 2 parts. First one is to write python script and parse th
 Write some code to fetch cat facts from the cat facts API: http://158.247.202.14:4141/facts
 Filter the resulting data so that only cat facts where the cat age is lower than 10 years old and the second name begins with a specific set of letters. The set of letters is every other letter in the alphabet starting from A, e.g: A, C, E, G, …
 Now serve this data up from your own HTTP API.
+<img src="./simplehttp_apiT.png">
 
 ### Part 2
 Write a cli tool that can be used to query cat facts from your new API, and also to delete entries. Allow outputting data in JSON, YAML, and table formats if time permits.
