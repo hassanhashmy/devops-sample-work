@@ -1,0 +1,35 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: api-v1-development-eks
+  region: eu-west-2
+
+nodeGroups:
+  - name: api-v1-development-eks-worker-group-1
+    instanceType: t3.medium
+    desiredCapacity: 6
+    maxSize: 12
+    availabilityZones: ['eu-west-2a', 'eu-west-2b', 'eu-west-2c']
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+    labels:
+      nodegroup-type: stateless-west2
+      instance-type: onDemand
+    ssh: # use existing EC2 key
+      publicKeyName: eks-development
+  # - name: scale-spot
+  #   desiredCapacity: 1
+  #   maxSize: 10
+  #   instancesDistribution:
+  #     instanceTypes: ['t2.small', 't3.small']
+  #     onDemandBaseCapacity: 0
+  #     onDemandPercentageAboveBaseCapacity: 0
+  #   availabilityZones: ['eu-west-2a']
+  #   iam:
+  #     withAddonPolicies:
+  #       autoScaler: true
+  #   labels:
+  #     nodegroup-type: spotters-west2
+  #     instance-type: spot

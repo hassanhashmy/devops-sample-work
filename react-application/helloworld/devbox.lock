@@ -1,0 +1,56 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "awscli2@latest": {
+      "last_modified": "2023-11-04T10:40:35Z",
+      "resolved": "github:NixOS/nixpkgs/9d5d25bbfe8c0297ebe85324addcb5020ed1a454#awscli2",
+      "source": "devbox-search",
+      "version": "2.13.28",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/smmbxnr8hzsv18f90hpyzpz4j9cvm7c9-awscli2-2.13.28"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/a553fck16n1bp496jchqqwc6l08xgrnl-awscli2-2.13.28"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/inl1nr5p3abvkp9bypgknc5xh32y5zai-awscli2-2.13.28"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/3i7776sb3cxncs0bf3n9qp9rhff8qwnk-awscli2-2.13.28"
+        }
+      }
+    },
+    "nodejs@20.9.0": {
+      "last_modified": "2023-10-25T20:49:13Z",
+      "resolved": "github:NixOS/nixpkgs/75a52265bda7fd25e06e3a67dee3f0354e73243c#nodejs_20",
+      "source": "devbox-search",
+      "version": "20.9.0",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/r8ppkdpxlmlv4magszy4xl816yf1s859-nodejs-20.9.0"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/j0diijav3hh37amjl67wnq5n3f782ipn-nodejs-20.9.0"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/zxh8gvmynd5mzx9hf5bhidb4yy0k4g2s-nodejs-20.9.0"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/17g2kfxglsl3rncfasqrxqs2g3bjin3k-nodejs-20.9.0"
+        }
+      }
+    },
+    "terraform_1@1.2.3": {
+      "last_modified": "2022-06-20T04:45:15Z",
+      "resolved": "github:NixOS/nixpkgs/72bbea9db7d727ed044e60b5f5febc60a3c5c955#terraform_1",
+      "source": "devbox-search",
+      "version": "1.2.3",
+      "systems": {
+        "x86_64-linux": {
+          "store_path": "/nix/store/skjprlnqvs2wngrnwnbii5vmnsldcxsa-terraform-1.2.3"
+        }
+      }
+    }
+  }
+}

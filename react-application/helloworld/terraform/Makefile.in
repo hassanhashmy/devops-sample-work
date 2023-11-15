@@ -1,0 +1,6 @@
+.PHONY: $(TASKS)
+
+TASKS := init plan apply destroy validate fmt
+
+$(TASKS):
+	terraform $@

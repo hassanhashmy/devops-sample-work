@@ -1,0 +1,2 @@
+## Project 1
+This project is not tested because I deleted so many things, path and names needs to setup but can work after checking and editing few things. But it helps to deploy terraform with ec2 and eks cluster to run different application in the form of different folders and deployment files

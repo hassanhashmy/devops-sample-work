@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servicecron3-cronjob-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: servicecron3-cronjob
+  template:
+    metadata:
+      labels:
+        app: servicecron3-cronjob
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - servicecron3-cronjob
+                topologyKey: failure-domain.beta.kubernetes.io/zone
+              weight: 100
+      containers:
+        - name: servicecron3-cronjob
+          image: xxxxxxxxxxxxx.dkr.ecr.eu-west-2.amazonaws.com/servicecron3-cronjob:development
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /servicecron3/health
+              port: 3000
+            initialDelaySeconds: 120
+            periodSeconds: 60
+            failureThreshold: 3
+          env:
+            - name: DOPPLER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: doppler-token
+                  key: DOPPLER_TOKEN
+
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: servicecron3-cronjob-srv
+spec:
+  selector:
+    app: servicecron3-cronjob
+  ports:
+    - name: servicecron3-cronjob
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

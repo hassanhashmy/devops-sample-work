@@ -1,0 +1,2 @@
+# http_api
+This is sample rest http api serverless framework deployment with aws lambda python3.8 and api gateway without proxy integration. This solution ingest Data from an api using Lambda with python 3.8 runtime, parse that data and return the response to AWS Api Gateway with REST HTTP. This solution selects default aws region eu-west-2

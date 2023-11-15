@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: 'awesomeapp-prod'
+spec:
+  destination:
+    name: 'in-cluster'
+    namespace: 'prod'
+  source:
+    path: 'charts/awesomeapp-chart'
+    repoURL: 'https://github.com/hassanhashmy/devops-k8-test'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-prod.yaml
+  project: 'default'
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

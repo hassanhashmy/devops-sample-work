@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servicecron2-cron-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: servicecron2-cron
+  template:
+    metadata:
+      labels:
+        app: servicecron2-cron
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - servicecron2-cron
+                topologyKey: failure-domain.beta.kubernetes.io/zone
+              weight: 100
+      containers:
+        - name: servicecron2-cron
+          image: XXXXXXXXXXXXXXX.dkr.ecr.eu-west-2.amazonaws.com/servicecron2-cron:development
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /servicecron2-cron
+              port: 3000
+            initialDelaySeconds: 120
+            periodSeconds: 60
+            failureThreshold: 3
+          env:
+            - name: DOPPLER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: doppler-token
+                  key: DOPPLER_TOKEN
+            - name: MS_NAME
+              value: servicecron2-cron
+            - name: PORT
+              value: '3000'
+
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: servicecron2-cron-srv
+spec:
+  selector:
+    app: servicecron2-cron
+  ports:
+    - name: servicecron2-cron
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

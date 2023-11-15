@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service1-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service1
+  template:
+    metadata:
+      labels:
+        app: service1
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - service1
+                topologyKey: failure-domain.beta.kubernetes.io/zone
+              weight: 100
+      containers:
+        - name: service1
+          image: xxxxxxxxxxxxx.dkr.ecr.eu-west-2.amazonaws.com/service1:development
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 120
+            periodSeconds: 60
+            failureThreshold: 3
+          env:
+            - name: DOPPLER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: doppler-token
+                  key: DOPPLER_TOKEN
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service1-srv
+spec:
+  selector:
+    app: service1
+  ports:
+    - name: service1
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

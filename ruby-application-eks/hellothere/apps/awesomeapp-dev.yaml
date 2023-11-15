@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: 'awesomeapp-dev'
+spec:
+  destination:
+    name: 'in-cluster'
+    namespace: 'dev'
+  source:
+    path: 'charts/awesomeapp-chart'
+    repoURL: 'https://github.com/hassanhashmy/devops-k8-test.git'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-dev.yaml
+  project: 'default'
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

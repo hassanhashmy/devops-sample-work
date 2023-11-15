@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro3-depl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: micro3
+  template:
+    metadata:
+      labels:
+        app: micro3
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - micro3
+                topologyKey: failure-domain.beta.kubernetes.io/zone
+              weight: 100
+      containers:
+        - name: micro3
+          image: xxxxxxxxxxxx.dkr.ecr.eu-west-2.amazonaws.com/micro3:development
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /micro3
+              port: 3000
+            initialDelaySeconds: 120
+            periodSeconds: 60
+            failureThreshold: 3
+          env:
+            - name: DOPPLER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: doppler-token
+                  key: DOPPLER_TOKEN
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: hash
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro3-srv
+spec:
+  selector:
+    app: micro3
+  ports:
+    - name: micro3
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
