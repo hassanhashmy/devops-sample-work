@@ -37,3 +37,7 @@ belong to which areas of the business so that specific actions can be performed.
 * `cdk destroy surecloud-cdk-scenario-prerequisite-stack` destroys prerequisite stack from your default AWS
   account/region
 
+## Scripts
+
+* `deploy.sh`     This script will be used to deploy the stack
+* `destroy.sh`    This script will be used to destroy the stack.
