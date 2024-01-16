@@ -1,0 +1,8 @@
+# terraform excluded files
+terraform.tfstate
+.terraform.d
+*.tfvars
+.terraform.lock.hcl
+.terraform/
+
+*.backup

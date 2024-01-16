@@ -1,0 +1,9 @@
+environment="develop"
+ecr_image_tag="develop"
+ecr_repository_names=["orange", "blue"]
+create_ecr=true
+ecr_force_delete=true
+
+services = {
+  api = ["blue", "orange"]
+}
