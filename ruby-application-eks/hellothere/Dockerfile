@@ -1,4 +1,4 @@
-FROM ruby:3.1.2-alpine
+FROM ruby:3.2.3-alpine
 
 # Add Tini - a tiny valid init
 RUN apk add --no-cache tini
